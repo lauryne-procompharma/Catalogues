@@ -323,13 +323,13 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
 <header>
   <div class="logo"><span class="logo-pill">ProcomPharma</span>Configurateur 2026</div>
   <div class="config-tabs">
-    <button class="config-tab" id="tab-config" onclick="switchTab('config')">⚙️ Config</button>
-    <button class="config-tab active" id="tab-design" onclick="switchTab('design')">🎨 Design</button>
+    <button class="config-tab active" id="tab-config" onclick="switchTab('config')">⚙️ Config</button>
+    <button class="config-tab" id="tab-design" onclick="switchTab('design')">🎨 Design</button>
   </div>
   <button onclick="downloadConfigurateur()" style="background:transparent;color:#7DD3A8;border:1.5px solid #7DD3A8;border-radius:7px;padding:.35rem .85rem;font-size:.72rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap;" title="Télécharger en local">💾 Télécharger</button>
   <button onclick="publishConfigurateur()" style="background:#00AD9F;color:white;border:none;border-radius:7px;padding:.35rem .85rem;font-size:.72rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap;" title="Mettre à jour le configurateur sur Netlify">🌐 Mettre à jour en ligne</button>
   <div class="header-tag">ProcomPharma · 2026</div>
-  <div style="font-size:.6rem;font-weight:700;color:#7DD3A8;background:rgba(125,211,168,.12);border:1px solid rgba(125,211,168,.3);border-radius:5px;padding:.18rem .5rem;white-space:nowrap;font-family:'Outfit',sans-serif;letter-spacing:.04em;">v2026.1.4</div>
+  <div style="font-size:.6rem;font-weight:700;color:#7DD3A8;background:rgba(125,211,168,.12);border:1px solid rgba(125,211,168,.3);border-radius:5px;padding:.18rem .5rem;white-space:nowrap;font-family:'Outfit',sans-serif;letter-spacing:.04em;">v2026.1.5</div>
 </header>
 
 <div class="global-bar">
@@ -340,7 +340,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
 </div>
 
 <!-- ── VUE CONFIG ── -->
-<div class="config-view" id="view-config">
+<div class="config-view active" id="view-config">
 <div class="app">
   <aside class="sidebar">
     <div>
@@ -352,6 +352,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       <div class="sector-info">
         <div class="sector-name">Secteur 39</div>
         <div class="sector-count">15 labos · 15 PDF renseignés</div>
+        <div style="font-size:.58rem;color:var(--ink3);margin-top:.1rem;">○ Jamais publié</div>
       </div>
       <div class="sector-actions">
         <button class="icon-btn" onclick="event.stopPropagation();openRenameModal('e9lkotq')" title="Renommer">✏️</button>
@@ -362,6 +363,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       <div class="sector-info">
         <div class="sector-name">Secteur 25</div>
         <div class="sector-count">31 labos · 31 PDF renseignés</div>
+        <div style="font-size:.58rem;color:var(--ink3);margin-top:.1rem;">○ Jamais publié</div>
       </div>
       <div class="sector-actions">
         <button class="icon-btn" onclick="event.stopPropagation();openRenameModal('nnifbzk')" title="Renommer">✏️</button>
@@ -372,6 +374,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       <div class="sector-info">
         <div class="sector-name">Secteur 90</div>
         <div class="sector-count">31 labos · 31 PDF renseignés</div>
+        <div style="font-size:.58rem;color:var(--ink3);margin-top:.1rem;">○ Jamais publié</div>
       </div>
       <div class="sector-actions">
         <button class="icon-btn" onclick="event.stopPropagation();openRenameModal('6vehkrw')" title="Renommer">✏️</button>
@@ -382,6 +385,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       <div class="sector-info">
         <div class="sector-name">Secteur 71</div>
         <div class="sector-count">27 labos · 27 PDF renseignés</div>
+        <div style="font-size:.58rem;color:var(--ink3);margin-top:.1rem;">○ Jamais publié</div>
       </div>
       <div class="sector-actions">
         <button class="icon-btn" onclick="event.stopPropagation();openRenameModal('u8yi5vh')" title="Renommer">✏️</button>
@@ -392,6 +396,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       <div class="sector-info">
         <div class="sector-name">TEST</div>
         <div class="sector-count">31 labos · 31 PDF renseignés</div>
+        <div style="font-size:.58rem;color:var(--ink3);margin-top:.1rem;">○ Jamais publié</div>
       </div>
       <div class="sector-actions">
         <button class="icon-btn" onclick="event.stopPropagation();openRenameModal('ru3hix7')" title="Renommer">✏️</button>
@@ -1070,8 +1075,8 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
 </div>
 
 <!-- ── VUE DESIGN ── -->
-<div class="config-view active" id="view-design">
-<div class="design-panel" id="designPanel"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.8rem;"><div><div style="font-family:'Playfair Display',serif;font-size:1.3rem;">🎨 Design des catalogues</div><div style="font-size:.72rem;color:var(--ink3);margin-top:.3rem;">Ces réglages s'appliquent à tous les catalogues générés.</div></div><button class="design-save-btn" onclick="saveDesign()">💾 Enregistrer</button></div><div style="margin-bottom:1.4rem;padding:.8rem 1.1rem;background:rgba(125,211,168,.07);border:1px solid rgba(125,211,168,.22);border-radius:10px;"><div style="font-size:.72rem;font-weight:600;color:#7DD3A8;margin-bottom:.2rem;">🔄 Uniformiser depuis <strong style="color:var(--ink);">(aucun secteur)</strong></div><div style="font-size:.62rem;color:var(--ink3);margin-bottom:.55rem;">Copier vers tous les secteurs :</div><div style="display:flex;gap:.4rem;flex-wrap:wrap;"><button onclick="applyToAll('','color')" style="background:transparent;color:#7DD3A8;border:1.5px solid #7DD3A8;border-radius:7px;padding:.28rem .7rem;font-size:.68rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap;">🎨 Couleur seule</button><button onclick="applyToAll('','design')" style="background:transparent;color:#a78bfa;border:1.5px solid #a78bfa;border-radius:7px;padding:.28rem .7rem;font-size:.68rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap;">✨ Design seul</button><button onclick="applyToAll('','both')" style="background:#7DD3A8;color:#0a2e1e;border:none;border-radius:7px;padding:.3rem .8rem;font-size:.68rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap;">✓ Couleur + design</button></div></div><div class="design-section"><div class="design-section-title">🎨 Couleur d'accent</div><div class="design-color-row"><input type="color" class="design-color-input" id="dColorPicker" value="#C8733A" oninput="syncColor(this)"><input type="text" class="design-color-hex" id="dColorHex" value="#C8733A" placeholder="#C8733A" oninput="syncColor(this)" maxlength="7"><div class="design-color-preview" id="dColorPreview" style="background:#C8733A"></div></div><div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;"><div onclick="setDesignColor('#C8733A')" style="width:28px;height:28px;border-radius:6px;background:#C8733A;cursor:pointer;border:2px solid white;transition:all .15s;"></div><div onclick="setDesignColor('#3A9A8A')" style="width:28px;height:28px;border-radius:6px;background:#3A9A8A;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div><div onclick="setDesignColor('#7A5FC8')" style="width:28px;height:28px;border-radius:6px;background:#7A5FC8;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div><div onclick="setDesignColor('#C84888')" style="width:28px;height:28px;border-radius:6px;background:#C84888;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div><div onclick="setDesignColor('#2A6EBB')" style="width:28px;height:28px;border-radius:6px;background:#2A6EBB;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div><div onclick="setDesignColor('#C8A83A')" style="width:28px;height:28px;border-radius:6px;background:#C8A83A;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div><div onclick="setDesignColor('#C84040')" style="width:28px;height:28px;border-radius:6px;background:#C84040;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div><div onclick="setDesignColor('#2A8A60')" style="width:28px;height:28px;border-radius:6px;background:#2A8A60;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div><div onclick="setDesignColor('#1C1916')" style="width:28px;height:28px;border-radius:6px;background:#1C1916;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div><div onclick="setDesignColor('#5A3E8A')" style="width:28px;height:28px;border-radius:6px;background:#5A3E8A;cursor:pointer;border:2px solid transparent;transition:all .15s;"></div></div></div><div style="margin-top:.7rem;"><div class="design-field-label" style="margin-bottom:.4rem;">Couleurs de la bande verte (hero)</div><div style="display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;"><div style="display:flex;align-items:center;gap:.4rem;"><label style="font-size:.65rem;color:var(--ink3);">Couleur 1</label><input type="color" value="#0D3B2A" oninput="design.heroColor1=this.value" style="width:36px;height:30px;border:1.5px solid var(--border2);border-radius:6px;padding:2px;cursor:pointer;"></div><div style="display:flex;align-items:center;gap:.4rem;"><label style="font-size:.65rem;color:var(--ink3);">Couleur 2</label><input type="color" value="#1B6B3A" oninput="design.heroColor2=this.value" style="width:36px;height:30px;border:1.5px solid var(--border2);border-radius:6px;padding:2px;cursor:pointer;"></div><div style="width:120px;height:30px;border-radius:6px;background:linear-gradient(135deg,#0D3B2A,#1B6B3A);border:1px solid var(--border2);"></div></div></div><div class="design-sep"></div><div class="design-section"><div class="design-section-title">🔠 Police de caractères</div><div class="font-grid"><div class="font-card" onclick="setDesignFont('Outfit')"><div class="font-card-name">Moderne</div><div class="font-card-preview" style="font-family:'Outfit', sans-serif">Aa — Bonjour</div></div><div class="font-card selected" onclick="setDesignFont('Playfair Display')"><div class="font-card-name">Classique</div><div class="font-card-preview" style="font-family:'Playfair Display', serif">Aa — Bonjour</div></div><div class="font-card" onclick="setDesignFont('Lato')"><div class="font-card-name">Épuré</div><div class="font-card-preview" style="font-family:'Lato', sans-serif">Aa — Bonjour</div></div><div class="font-card" onclick="setDesignFont('Merriweather')"><div class="font-card-name">Élégant</div><div class="font-card-preview" style="font-family:'Merriweather', serif">Aa — Bonjour</div></div><div class="font-card" onclick="setDesignFont('Montserrat')"><div class="font-card-name">Premium</div><div class="font-card-preview" style="font-family:'Montserrat', sans-serif">Aa — Bonjour</div></div><div class="font-card" onclick="setDesignFont('Dancing Script')"><div class="font-card-name">Manuscrite</div><div class="font-card-preview" style="font-family:'Dancing Script', cursive">Aa — Bonjour</div></div></div></div><div class="design-sep"></div><div class="design-section"><div class="design-section-title">🖼️ Logo</div><div style="display:flex;gap:.5rem;margin-bottom:.5rem;align-items:center;"><input class="design-input" id="dLogoUrl" placeholder="https://…" value="" oninput="previewLogo()" style="flex:1;"><label class="btn btn-ghost" style="cursor:pointer;white-space:nowrap;padding:.42rem .85rem;font-size:.74rem;">📂 Fichier<input type="file" accept="image/*" style="display:none;" onchange="uploadLogoFile(this)"></label><button onclick="clearLogo()" style="background:none;border:1px solid var(--red);border-radius:6px;padding:.22rem .55rem;font-size:.65rem;color:var(--red);cursor:pointer;">✕</button></div><img id="dLogoPreview" class="logo-preview" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD..." style="display:block;max-height:50px;border-radius:6px;"></div><div class="design-sep"></div><div class="design-section"><div class="design-section-title">✎️ Textes de la page</div><div class="design-field" style="margin-bottom:.7rem;"><div class="design-field-label">Titre principal</div><input class="design-input" id="dHeroTitle" value="Trouvez le bon &lt;em&gt;laboratoire&lt;/em&gt;,&lt;br&gt;accédez au catalogue PDF" placeholder="Trouvez le bon laboratoire…"></div><div class="design-field" style="margin-bottom:.7rem;"><div class="design-field-label">Sous-titre</div><input class="design-input" id="dHeroSub" value="" placeholder="Texte optionnel"></div><div class="design-field" style="margin-bottom:.7rem;"><div class="design-field-label">Placeholder recherche</div><input class="design-input" id="dSearchPlaceholder" value="Bouillotte, bébé, hygiène, thé…" placeholder="Bouillotte, bébé…"></div><div class="design-field"><div class="design-field-label">Pied de page</div><input class="design-input" id="dFooterText" value="" placeholder="ProcomPharma 2026…"></div></div><div class="design-sep"></div><div class="design-section"><div class="design-section-title">👤 Délégués commerciaux</div><div style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:.7rem;"><div style="background:var(--surface);border:1px solid var(--border2);border-radius:9px;padding:.6rem .9rem;display:flex;align-items:center;gap:.7rem;"><div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;overflow:hidden;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">👤</div><div style="flex:1;min-width:0;"><div style="font-size:.82rem;font-weight:600;">Lauryne SEBERT</div><div style="font-size:.62rem;color:var(--ink3);">0687543502 · commande@procom-pharma.com</div></div><button class="labo-list-btn" onclick="openEditDelegateModal('del_d9hbf8n')">✏️</button><button class="labo-list-btn del" onclick="deleteDelegate('del_d9hbf8n')">🗑️</button></div><div style="background:var(--surface);border:1px solid var(--border2);border-radius:9px;padding:.6rem .9rem;display:flex;align-items:center;gap:.7rem;"><div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;overflow:hidden;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">👤</div><div style="flex:1;min-width:0;"><div style="font-size:.82rem;font-weight:600;">test 2</div><div style="font-size:.62rem;color:var(--ink3);"></div></div><button class="labo-list-btn" onclick="openEditDelegateModal('del_sb4cljm')">✏️</button><button class="labo-list-btn del" onclick="deleteDelegate('del_sb4cljm')">🗑️</button></div></div><button class="btn-add-labo" style="width:100%;justify-content:center;" onclick="openAddDelegateModal()">＋ Ajouter un délégué</button><div style="font-size:.62rem;color:var(--ink3);margin-top:.5rem;">Associez les délégués aux secteurs dans ⚙️ Config.</div></div><div class="design-sep"></div><div class="design-sep"></div><div class="design-section"><div class="design-section-title">🌐 Publication GitHub Pages</div><div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem;">Token GitHub pour publier les catalogues sur <strong>lauryne-procompharma.github.io/Catalogues</strong></div><div class="design-field"><div class="design-field-label">Token GitHub</div><input class="design-input" id="dGithubToken" type="password" placeholder="ghp_…" value="" style="font-family:monospace;"></div><div style="font-size:.62rem;color:var(--ink3);margin-top:.3rem;">🔒 Stocké localement sur votre appareil uniquement.</div></div><div style="text-align:center;margin-top:1.5rem;"><button class="design-save-btn" onclick="saveDesign()">💾 Enregistrer le design</button></div></div>
+<div class="config-view" id="view-design">
+<div class="design-panel" id="designPanel"></div>
 </div>
 
 <!-- Modal : Nouveau secteur -->
@@ -1538,12 +1543,24 @@ function openModal(id){ document.getElementById(id).classList.add('open'); }
 });
 
 // ── SIDEBAR ───────────────────────────────────────────────────────────────────
+function getLastPublished(sid){
+  return localStorage.getItem('ads_lastpub_'+sid)||null;
+}
+function setLastPublished(sid){
+  const now=new Date();
+  const str=now.toLocaleDateString('fr-FR')+' '+now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  localStorage.setItem('ads_lastpub_'+sid,str);
+}
 function renderSidebar(){
   const list = document.getElementById('sectorList');
   list.innerHTML = '';
   sectors.forEach(s => {
     const nb = s.labos.length;
     const nbP = getLabosOrdered().filter(l => s.labos.includes(l.id) && getPdf(l.id)).length;
+    const lastPub = getLastPublished(s.id);
+    const pubInfo = lastPub
+      ? '<div style="font-size:.58rem;color:#00AD9F;margin-top:.1rem;">&#10003; Publié le '+lastPub+'</div>'
+      : '<div style="font-size:.58rem;color:var(--ink3);margin-top:.1rem;">&#9675; Jamais publié</div>';
     const el = document.createElement('div');
     el.className = 'sector-item' + (s.id === activeSectorId ? ' active' : '');
     el.innerHTML = `
@@ -1551,11 +1568,12 @@ function renderSidebar(){
       <div class="sector-info">
         <div class="sector-name">${s.nom}</div>
         <div class="sector-count">${nb} labo${nb>1?'s':''} · ${nbP} PDF renseigné${nbP>1?'s':''}</div>
+        `+pubInfo+`
       </div>
       <div class="sector-actions">
-        <button class="icon-btn" onclick="event.stopPropagation();openRenameModal('${s.id}')" title="Renommer">✏️</button>
-        <button class="icon-btn" onclick="event.stopPropagation();generateOne('${s.id}')" title="Générer">⬇️</button>
-        <button class="icon-btn danger" onclick="event.stopPropagation();deleteSector('${s.id}')" title="Supprimer">🗑️</button>
+        <button class="icon-btn" onclick="event.stopPropagation();openRenameModal('${s.id}')" title="Renommer">&#9999;&#65039;</button>
+        <button class="icon-btn" onclick="event.stopPropagation();generateOne('${s.id}')" title="Générer">&#11015;&#65039;</button>
+        <button class="icon-btn danger" onclick="event.stopPropagation();deleteSector('${s.id}')" title="Supprimer">&#128465;&#65039;</button>
       </div>`;
     el.onclick = () => selectSector(s.id);
     list.appendChild(el);
@@ -1595,6 +1613,7 @@ function renderEditor(){
           ${s.nom}
         </div>
         <div class="panel-subtitle">${checked} labo${checked>1?'s':''} · ${nbPdf} lien${nbPdf>1?'s':''} PDF renseigné${nbPdf>1?'s':''}</div>
+        <div style="font-size:.62rem;margin-top:.2rem;">${getLastPublished(s.id) ? '<span style="color:#00AD9F;">&#10003; Dernière publication : '+getLastPublished(s.id)+'</span>' : '<span style="color:var(--ink3);">&#9675; Jamais publié sur GitHub</span>'}</div>
       </div>
       <div class="panel-actions">
         <button class="btn btn-ghost" onclick="openRenameModal('${s.id}')">✏️ Renommer</button>
@@ -2305,7 +2324,9 @@ function buildCatalogueHTML(sector){
   const heroTitle   = pageTexts.heroTitle || 'Trouvez le bon <em>laboratoire</em>,<br>accédez au catalogue PDF';
   const heroSub     = pageTexts.heroSub || (labosActifs.length+' laboratoire'+(labosActifs.length>1?'s':'')+' disponibles sur ce secteur');
   const searchPH    = pageTexts.searchPlaceholder || 'Bouillotte, bébé, hygiène, thé…';
-  const footerTxt   = pageTexts.footerText || ('Catalogue '+sector.nom+' · ProcomPharma 2026 · '+labosActifs.length+' laboratoire'+(labosActifs.length>1?'s':''));
+  const now = new Date();
+  const dateGen = now.toLocaleDateString('fr-FR')+' '+now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  const footerTxt   = (pageTexts.footerText || ('Catalogue '+sector.nom+' · ProcomPharma 2026 · '+labosActifs.length+' laboratoire'+(labosActifs.length>1?'s':'')))+' · v2026.1.5 · Généré le '+dateGen;
   const logoHTML    = design.logoUrl ? '<img src="'+design.logoUrl+'" class="header-logo" alt="Logo">' : '';
 
   // Contact page - one card per delegate
@@ -3662,6 +3683,7 @@ async function publishToNetlify(sid){
 
     if(!res.ok){ const e=await res.text(); throw new Error(e); }
 
+    setLastPublished(sid); renderSidebar();
     toast('✅','Publié ! Disponible dans ~30 secondes…');
     setTimeout(()=>{
       if(confirm('✅ Catalogue "'+s.nom+'" publié sur GitHub Pages !\n\n🔗 '+siteUrl+'\n\n(Attendre ~30 secondes pour la mise à jour)\n\nOuvrir ?')){
