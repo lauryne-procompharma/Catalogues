@@ -2353,7 +2353,8 @@ function buildCatalogueHTML(sector){
     customTabsHTML += tabContent + '</div></div>';
   });
   // Determine active first tab and build nav
-  const firstTabId = (showTabOffres&&ofrChips&&modeOffres!=='card') ? 'offres' : (showTabContact&&hasDelegate&&modeContact!=='card' ? 'contact' : (customTabs.find(t=>modeCustom(t.id)!=='card') ? customTabs.find(t=>modeCustom(t.id)!=='card').id : ''));
+  // Aucun onglet actif par défaut : l'accueil (labos) est toujours affiché en premier
+  const firstTabId = '';
   let tabsNav = '';
   const hasTabs = showTabLabos||showTabOffres||showTabContact||customTabs.length;
   if(hasTabs){
