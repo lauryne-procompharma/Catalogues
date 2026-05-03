@@ -347,7 +347,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       <div class="sidebar-title">🗺️ Secteurs géographiques</div>
       <div class="sidebar-sub">Sélectionnez un secteur, cochez les labos, collez les liens PDF, puis générez.</div>
     </div>
-    <div class="sector-list" id="sectorList"><div class="sector-item active">
+    <div class="sector-list" id="sectorList"><div class="sector-item">
       <div class="sector-dot" style="background:#5A9A60"></div>
       <div class="sector-info">
         <div class="sector-name">Secteur 39</div>
@@ -358,7 +358,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="icon-btn" onclick="event.stopPropagation();openRenameModal('e9lkotq')" title="Renommer">✏️</button>
         <button class="icon-btn" onclick="event.stopPropagation();generateOne('e9lkotq')" title="Générer">⬇️</button>
         <button class="icon-btn danger" onclick="event.stopPropagation();deleteSector('e9lkotq')" title="Supprimer">🗑️</button>
-      </div></div><div class="sector-item">
+      </div></div><div class="sector-item active">
       <div class="sector-dot" style="background:#C84888"></div>
       <div class="sector-info">
         <div class="sector-name">Secteur 25</div>
@@ -417,16 +417,16 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
     <div class="panel-header">
       <div>
         <div class="panel-title">
-          <span style="width:13px;height:13px;border-radius:50%;background:#5A9A60;display:inline-block;flex-shrink:0"></span>
-          Secteur 39
+          <span style="width:13px;height:13px;border-radius:50%;background:#C84888;display:inline-block;flex-shrink:0"></span>
+          Secteur 25
         </div>
-        <div class="panel-subtitle">16 labos · 16 liens PDF renseignés</div>
-        <div style="font-size:.62rem;margin-top:.2rem;"><span style="color:#00AD9F;">✓ Dernière publication : 03/05/2026 17:18</span></div>
+        <div class="panel-subtitle">33 labos · 33 liens PDF renseignés</div>
+        <div style="font-size:.62rem;margin-top:.2rem;"><span style="color:#00AD9F;">✓ Dernière publication : 30/03/2026 15:27</span></div>
       </div>
       <div class="panel-actions">
-        <button class="btn btn-ghost" onclick="openRenameModal('e9lkotq')">✏️ Renommer</button>
-        <button class="btn btn-primary" onclick="generateOne('e9lkotq')">⬇️ Télécharger</button>
-        <button class="btn btn-primary" onclick="publishToNetlify('e9lkotq')" style="background:#00AD9F;border-color:#00AD9F;" title="Publier sur Netlify">📤 Publier</button>
+        <button class="btn btn-ghost" onclick="openRenameModal('nnifbzk')">✏️ Renommer</button>
+        <button class="btn btn-primary" onclick="generateOne('nnifbzk')">⬇️ Télécharger</button>
+        <button class="btn btn-primary" onclick="publishToNetlify('nnifbzk')" style="background:#00AD9F;border-color:#00AD9F;" title="Publier sur Netlify">📤 Publier</button>
       </div>
     </div>
 
@@ -439,7 +439,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       <div class="offres-manager-header" style="cursor:default;">
         <span class="offres-manager-title">📑 Onglets du catalogue</span>
       </div>
-      <div style="padding:.6rem .9rem;display:flex;flex-direction:column;gap:.4rem;" id="tabTogglePanel-e9lkotq">
+      <div style="padding:.6rem .9rem;display:flex;flex-direction:column;gap:.4rem;" id="tabTogglePanel-nnifbzk">
         <div class="tab-toggle-item" style="flex-direction:column;align-items:stretch;gap:.35rem;padding:.55rem .8rem;"><div style="display:flex;align-items:center;justify-content:space-between;"><span class="tab-toggle-label">⚡ Offres du moment</span><label class="toggle-switch"><input type="checkbox" id="dTab2_offres" checked="" onchange="toggleTabActive('offres','tabOffres')"><span class="toggle-slider"></span></label></div><div style="display:flex;gap:.3rem;"><button onclick="setTabItemMode('offres','onglet')" style="flex:1;padding:.2rem .4rem;font-size:.62rem;border-radius:6px;border:1.5px solid var(--border2);background:none;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;">Onglet</button><button onclick="setTabItemMode('offres','card')" style="flex:1;padding:.2rem .4rem;font-size:.62rem;border-radius:6px;border:1.5px solid var(--accent);background:var(--accent-bg);color:var(--accent);cursor:pointer;font-family:'Outfit',sans-serif;">Encart</button></div></div><div class="tab-toggle-item" style="flex-direction:column;align-items:stretch;gap:.35rem;padding:.55rem .8rem;"><div style="display:flex;align-items:center;justify-content:space-between;"><span class="tab-toggle-label">📞 Contact délégué</span><label class="toggle-switch"><input type="checkbox" id="dTab2_contact" checked="" onchange="toggleTabActive('contact','tabContact')"><span class="toggle-slider"></span></label></div><div style="display:flex;gap:.3rem;"><button onclick="setTabItemMode('contact','onglet')" style="flex:1;padding:.2rem .4rem;font-size:.62rem;border-radius:6px;border:1.5px solid var(--accent);background:var(--accent-bg);color:var(--accent);cursor:pointer;font-family:'Outfit',sans-serif;">Onglet</button><button onclick="setTabItemMode('contact','card')" style="flex:1;padding:.2rem .4rem;font-size:.62rem;border-radius:6px;border:1.5px solid var(--border2);background:none;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;">Encart</button></div></div>
         <button class="btn-add-labo" style="background:var(--purple);width:100%;justify-content:center;margin-top:.3rem;" onclick="openAddCustomTabModal()">＋ Ajouter un onglet</button>
       </div>
@@ -527,7 +527,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
     </div>
 
     <!-- DÉLÉGUÉS DU SECTEUR -->
-    <div class="sector-delegates-selector"><div class="sector-delegates-title">👤 Délégués associés à ce secteur</div><div><span class="sector-delegate-chip active" onclick="toggleDelegateForSector('e9lkotq','del_d9hbf8n')">✓ Lauryne SEBERT</span><span class="sector-delegate-chip" onclick="toggleDelegateForSector('e9lkotq','del_sb4cljm')">test 2</span></div><div style="font-size:.62rem;color:var(--ink3);margin-top:.4rem;">Gérez les délégués dans l'onglet 🎨 Design</div></div>
+    <div class="sector-delegates-selector"><div class="sector-delegates-title">👤 Délégués associés à ce secteur</div><div><span class="sector-delegate-chip active" onclick="toggleDelegateForSector('nnifbzk','del_d9hbf8n')">✓ Lauryne SEBERT</span><span class="sector-delegate-chip" onclick="toggleDelegateForSector('nnifbzk','del_sb4cljm')">test 2</span></div><div style="font-size:.62rem;color:var(--ink3);margin-top:.4rem;">Gérez les délégués dans l'onglet 🎨 Design</div></div>
 
     <div class="section-label">Laboratoires / Fournisseurs
       <span class="labo-count-badge">34 labos</span>
@@ -541,15 +541,15 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
     </div>
     <div class="config-search-count" id="configSearchCount" style="display:none"></div>
     <div class="select-bar">
-      <button class="select-all-btn" onclick="selectAll('e9lkotq')">✅ Tout sélectionner</button>
-      <button class="select-none-btn" onclick="selectNone('e9lkotq')">✕ Tout désélectionner</button>
-      <span class="selected-count">16 / 34 labos actifs</span>
+      <button class="select-all-btn" onclick="selectAll('nnifbzk')">✅ Tout sélectionner</button>
+      <button class="select-none-btn" onclick="selectNone('nnifbzk')">✕ Tout désélectionner</button>
+      <span class="selected-count">33 / 34 labos actifs</span>
     </div>
     <div class="labo-grid">
       
-    <div class="labo-card" id="card-adisphar">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','adisphar')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-adisphar">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','adisphar')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">📦</div>
         <div class="labo-name">ADISPHAR</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('adisphar')" title="Modifier nom/icône/contact">✏️</button>
@@ -565,7 +565,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-alphanova">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','alphanova')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','alphanova')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">☀️</div>
         <div class="labo-name">ALPHANOVA</div>
@@ -581,9 +581,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('alphanova')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-ageti">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','ageti')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-ageti">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','ageti')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🏥</div>
         <div class="labo-name">AGETI</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('ageti')" title="Modifier nom/icône/contact">✏️</button>
@@ -598,9 +598,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('ageti')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-aquaromat">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','aquaromat')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-aquaromat">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','aquaromat')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">👓</div>
         <div class="labo-name">AQUAROMAT</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('aquaromat')" title="Modifier nom/icône/contact">✏️</button>
@@ -615,9 +615,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('aquaromat')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-ecolibrium">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','ecolibrium')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-ecolibrium">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','ecolibrium')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🐯</div>
         <div class="labo-name">BAUME DU TIGRE</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('ecolibrium')" title="Modifier nom/icône/contact">✏️</button>
@@ -633,7 +633,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-bhome">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','bhome')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','bhome')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🌸</div>
         <div class="labo-name">BHOME COSMETICS</div>
@@ -650,7 +650,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-biopousse">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','biopousse')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','biopousse')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🌱</div>
         <div class="labo-name">BIOPOUSSE</div>
@@ -666,9 +666,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('biopousse')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-proteinsa">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','proteinsa')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-proteinsa">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','proteinsa')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">💪</div>
         <div class="labo-name">COLPROPUR</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('proteinsa')" title="Modifier nom/icône/contact">✏️</button>
@@ -683,9 +683,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('proteinsa')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-docteur_b">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','docteur_b')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-docteur_b">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','docteur_b')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🩺</div>
         <div class="labo-name">DOCTEUR B</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('docteur_b')" title="Modifier nom/icône/contact">✏️</button>
@@ -701,7 +701,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-eau_lala">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','eau_lala')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','eau_lala')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">💦</div>
         <div class="labo-name">EAU LALA</div>
@@ -718,7 +718,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-gm_optical">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','gm_optical')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','gm_optical')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">👓</div>
         <div class="labo-name">GM INDUSTRIE / NÜNETI</div>
@@ -735,7 +735,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-h2opharm">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','h2opharm')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','h2opharm')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">💊</div>
         <div class="labo-name">H2O PHARM</div>
@@ -751,9 +751,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('h2opharm')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-katadyngroup">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','katadyngroup')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-katadyngroup">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','katadyngroup')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🧭</div>
         <div class="labo-name">KATADYN</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('katadyngroup')" title="Modifier nom/icône/contact">✏️</button>
@@ -769,7 +769,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-lescomptoirsdestendances">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','lescomptoirsdestendances')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','lescomptoirsdestendances')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🛍️</div>
         <div class="labo-name">LCDT</div>
@@ -785,9 +785,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('lescomptoirsdestendances')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-lespetiteschoses">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','lespetiteschoses')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-lespetiteschoses">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','lespetiteschoses')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🎀</div>
         <div class="labo-name">LES PETITES CHOSES</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('lespetiteschoses')" title="Modifier nom/icône/contact">✏️</button>
@@ -803,7 +803,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-marilou">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','marilou')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','marilou')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🌸</div>
         <div class="labo-name">MARILOU BIO</div>
@@ -819,9 +819,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('marilou')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-mastindustria">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','mastindustria')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-mastindustria">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','mastindustria')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">✨</div>
         <div class="labo-name">MAST INDUSTRIA</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('mastindustria')" title="Modifier nom/icône/contact">✏️</button>
@@ -836,9 +836,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('mastindustria')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-microlife">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','microlife')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-microlife">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','microlife')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🩺</div>
         <div class="labo-name">MICROLIFE</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('microlife')" title="Modifier nom/icône/contact">✏️</button>
@@ -854,7 +854,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-neodermy">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','neodermy')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','neodermy')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">💡</div>
         <div class="labo-name">NEODERMY</div>
@@ -870,9 +870,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('neodermy')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-nildor">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','nildor')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-nildor">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','nildor')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🌿</div>
         <div class="labo-name">NILDOR</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('nildor')" title="Modifier nom/icône/contact">✏️</button>
@@ -888,7 +888,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-pages_velay">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','pages_velay')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','pages_velay')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🫖</div>
         <div class="labo-name">PAGES</div>
@@ -904,9 +904,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('pages_velay')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-luxury_bathing">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','luxury_bathing')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-luxury_bathing">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','luxury_bathing')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🛁</div>
         <div class="labo-name">PHARMACOSMO</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('luxury_bathing')" title="Modifier nom/icône/contact">✏️</button>
@@ -921,9 +921,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('luxury_bathing')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-poderm">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','poderm')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-poderm">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','poderm')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🦶</div>
         <div class="labo-name">PODERM</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('poderm')" title="Modifier nom/icône/contact">✏️</button>
@@ -938,9 +938,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('poderm')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-remedeus">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','remedeus')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-remedeus">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','remedeus')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🌿</div>
         <div class="labo-name">REMEDEUS</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('remedeus')" title="Modifier nom/icône/contact">✏️</button>
@@ -955,9 +955,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('remedeus')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-melibiotech">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','melibiotech')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-melibiotech">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','melibiotech')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🍯</div>
         <div class="labo-name">REVAMIL</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('melibiotech')" title="Modifier nom/icône/contact">✏️</button>
@@ -972,9 +972,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('melibiotech')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-rosebaie">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','rosebaie')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-rosebaie">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','rosebaie')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🌹</div>
         <div class="labo-name">ROSEBAIE</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('rosebaie')" title="Modifier nom/icône/contact">✏️</button>
@@ -990,7 +990,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-shine_sante">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','shine_sante')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','shine_sante')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🏥</div>
         <div class="labo-name">SHINE SANTÉ</div>
@@ -1007,7 +1007,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-tleclerc">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','tleclerc')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','tleclerc')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">💄</div>
         <div class="labo-name">T. LeCLERC</div>
@@ -1024,7 +1024,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-waternose">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','waternose')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','waternose')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">💧</div>
         <div class="labo-name">WATERNOSE</div>
@@ -1041,7 +1041,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-labo_alphagreen_940ott3">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','labo_alphagreen_940ott3')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','labo_alphagreen_940ott3')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🏭</div>
         <div class="labo-name">ALPHAGREEN</div>
@@ -1058,7 +1058,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-labo_av_y_ogcsb9q">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','labo_av_y_ogcsb9q')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','labo_av_y_ogcsb9q')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🏭</div>
         <div class="labo-name">AV'Y</div>
@@ -1075,7 +1075,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card" id="card-labo_aloevera_4w34pel">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','labo_aloevera_4w34pel')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','labo_aloevera_4w34pel')">
         <div class="labo-check"></div>
         <div class="labo-icon">🏭</div>
         <div class="labo-name">ALOEVERA</div>
@@ -1092,7 +1092,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
       </div>
     </div>
     <div class="labo-card checked" id="card-labo_collosol_y66rbgj">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','labo_collosol_y66rbgj')">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','labo_collosol_y66rbgj')">
         <div class="labo-check">✓</div>
         <div class="labo-icon">🏭</div>
         <div class="labo-name">COLLOSOL</div>
@@ -1108,9 +1108,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
         <button class="pdf-save-btn" onclick="savePdf('labo_collosol_y66rbgj')">Enregistrer</button>
       </div>
     </div>
-    <div class="labo-card" id="card-labo_yanora_lvavne5">
-      <div class="card-top" onclick="toggleLabo('e9lkotq','labo_yanora_lvavne5')">
-        <div class="labo-check"></div>
+    <div class="labo-card checked" id="card-labo_yanora_lvavne5">
+      <div class="card-top" onclick="toggleLabo('nnifbzk','labo_yanora_lvavne5')">
+        <div class="labo-check">✓</div>
         <div class="labo-icon">🏭</div>
         <div class="labo-name">YANORA</div>
         <button class="labo-edit-btn" onclick="event.stopPropagation();openEditLaboModal('labo_yanora_lvavne5')" title="Modifier nom/icône/contact">✏️</button>
