@@ -1771,7 +1771,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border2);padding:1rem
   </div>
 </div>
 
-<div id="pubStatus" style="display:none;position:fixed;left:16px;bottom:16px;z-index:9999;max-width:440px;background:#1F2A30;color:#fff;border-radius:10px;padding:.8rem 1rem 1.6rem;font-size:.78rem;line-height:1.45;box-shadow:0 6px 24px rgba(0,0,0,.25);font-family:'Outfit',sans-serif;"></div>
+<div id="pubStatus" style="display:none;position:fixed;left:50%;top:70px;transform:translateX(-50%);z-index:9999;width:min(560px,calc(100vw - 32px));background:#1F2A30;color:#fff;border:2px solid #00AD9F;border-radius:12px;padding:1rem 1.2rem 1.8rem;font-size:.9rem;line-height:1.5;box-shadow:0 10px 40px rgba(0,0,0,.35);font-family:'Outfit',sans-serif;"></div>
 <div class="toast" id="toast"><span id="toastIcon">📤</span><span id="toastMsg">Mise à jour du configurateur en cours…</span></div>
 
 <script>
@@ -4080,50 +4080,45 @@ async function ghCommitFiles(files, message){
 let pubWatchId=0;
 function showPubStatus(html, closable){
   const el=document.getElementById('pubStatus'); if(!el) return;
+  if(el.parentElement!==document.body) document.body.appendChild(el);
   el.innerHTML=html+(closable?'<div style="position:absolute;right:10px;bottom:6px;"><a href="#" onclick="document.getElementById(\'pubStatus\').style.display=\'none\';return false;" style="color:#9fb;font-size:.7rem;">Fermer</a></div>':'');
   el.style.display='block';
 }
 function fmtDuree(ms){ const t=Math.round(ms/1000); return Math.floor(t/60)+' min '+String(t%60).padStart(2,'0')+' s'; }
-// Suit la mise en ligne GitHub Pages du commit, puis vérifie les pages publiées
+// Suit la mise en ligne : vérifie directement que les pages en ligne sont celles qu'on vient d'envoyer
 async function watchDeployment(sha, label, pages){
   const myId=++pubWatchId; const t0=Date.now();
   const liens=pages.map(p=>'<a href="'+p.url+'" target="_blank" style="color:#7DD3A8;">'+p.nom+'</a>').join(' · ');
   const suivi='<a href="https://github.com/'+GH_OWNER+'/'+GH_REPO+'/actions" target="_blank" style="color:#9fb;">suivi GitHub</a>';
-  let etat='en attente';
+  const norm=t=>String(t).replace(/\r\n/g,'\n').trim();
+  let enLigne=0, remplace=false, texts={};
   while(myId===pubWatchId){
-    showPubStatus('⏳ <b>'+label+'</b> : envoyé à GitHub.<br>Mise en ligne en cours (<b>'+etat+'</b>, '+fmtDuree(Date.now()-t0)+' écoulées).<br>Compter <b>1 à 10 minutes</b>. Ne republie pas entre-temps : une nouvelle publication annule celle en cours.<br><span style="opacity:.75">'+suivi+'</span>');
-    try{
-      const r=await ghApi('/actions/runs?head_sha='+sha+'&per_page=5');
-      const run=(r.workflow_runs||[])[0];
-      if(run){
-        if(run.status==='completed'){
-          if(run.conclusion==='success'){ break; }
-          if(run.conclusion==='cancelled'){
-            if(myId===pubWatchId) showPubStatus('⚠️ <b>'+label+'</b> : mise en ligne annulée par GitHub (une publication plus récente l\'a remplacée). Si tu n\'as rien republié, relance la publication.<br>'+suivi,true);
-            return;
-          }
-          showPubStatus('❌ <b>'+label+'</b> : la mise en ligne a échoué ('+run.conclusion+'). Regarde le '+suivi+'.',true); return;
-        }
-        etat = run.status==='in_progress' ? 'en cours' : 'en file d\'attente';
-      }
-    }catch(e){ etat='vérification impossible ('+String(e.message||e).slice(0,40)+')'; }
-    if(Date.now()-t0>20*60*1000){ showPubStatus('⚠️ <b>'+label+'</b> : toujours pas en ligne après 20 min. Regarde le '+suivi+'.',true); return; }
+    enLigne=0; remplace=false;
+    for(const p of pages){
+      try{
+        const t=await fetch(p.url+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.text());
+        texts[p.url]=t;
+        if(norm(t)===norm(p.expected)) enLigne++;
+      }catch(e){}
+    }
+    if(myId!==pubWatchId) return;
+    if(enLigne===pages.length) break;
+    const ecoule=Date.now()-t0;
+    showPubStatus('⏳ <b>'+label+'</b> : envoyé à GitHub, mise en ligne en cours.<br>'+enLigne+' page(s) sur '+pages.length+' déjà en ligne · '+fmtDuree(ecoule)+' écoulées.<br>Compter <b>1 à 10 minutes</b>. Inutile de recliquer : chaque nouvelle publication remplace la précédente.<br><span style="opacity:.75">'+suivi+'</span>');
+    if(ecoule>20*60*1000){ showPubStatus('⚠️ <b>'+label+'</b> : toujours pas en ligne après 20 min. Regarde le '+suivi+'.',true); return; }
     await new Promise(res=>setTimeout(res,15000));
   }
   if(myId!==pubWatchId) return;
-  // Vérification des pages réellement en ligne (photo de la fiche déléguée)
   let detail='';
   for(const p of pages){
     if(!p.checkPhoto) continue;
-    try{
-      const t=await fetch(p.url+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.text());
-      const ok=t.indexOf('class="contact-photo"')>=0;
-      detail+='<br>'+(ok?'✅':'⚠️')+' '+p.nom+' : photo '+(ok?'présente':'absente');
-    }catch(e){ detail+='<br>• '+p.nom+' : vérification impossible'; }
+    const ok=(texts[p.url]||'').indexOf('class="contact-photo"')>=0;
+    detail+='<br>'+(ok?'✅':'⚠️')+' '+p.nom+' : photo '+(ok?'présente':'absente (vérifie le délégué rattaché à ce secteur)');
   }
+  toast('✅',label+' : en ligne');
   showPubStatus('✅ <b>'+label+'</b> : en ligne ('+fmtDuree(Date.now()-t0)+').'+detail+'<br>Si ton navigateur affiche encore l\'ancienne version, fais <b>Ctrl+F5</b> sur la page.<br>'+liens,true);
 }
-function sectorPage(s){ return {nom:s.nom,url:GH_SITE+sectorSlug(s)+'/',checkPhoto:true}; }
+function sectorPage(s,html){ return {nom:s.nom,url:GH_SITE+sectorSlug(s)+'/',checkPhoto:true,expected:html}; }
 
 async function publishToNetlify(sid){
   // Publication d'UN secteur vers GitHub Pages
@@ -4132,11 +4127,12 @@ async function publishToNetlify(sid){
   if(!s){ toast('⚠️','Secteur introuvable'); return; }
   toast('📤','Envoi à GitHub…');
   try {
-    const sha=await ghCommitFiles([{path:sectorSlug(s)+'/index.html',content:buildCatalogueHTML(s)}],
+    const html=buildCatalogueHTML(s);
+    const sha=await ghCommitFiles([{path:sectorSlug(s)+'/index.html',content:html}],
       '📤 Mise à jour catalogue '+s.nom+' — '+new Date().toLocaleDateString('fr-FR'));
     setLastPublished(sid); renderSidebar();
     toast('✅','Envoyé. Mise en ligne en cours…');
-    watchDeployment(sha,'Publication '+s.nom,[sectorPage(s)]);
+    watchDeployment(sha,'Publication '+s.nom,[sectorPage(s,html)]);
   } catch(err){
     console.error('GitHub error:', err);
     toast('❌','Erreur : '+String(err.message||err).slice(0,100));
@@ -4154,7 +4150,7 @@ async function publishAllSectors(){
     const sha=await ghCommitFiles(files,'📤 Mise à jour catalogues '+list.map(s=>s.nom).join(', ')+' — '+new Date().toLocaleDateString('fr-FR'));
     list.forEach(s=>setLastPublished(s.id)); renderSidebar();
     toast('✅','Envoyé. Mise en ligne en cours…');
-    watchDeployment(sha,'Publication de '+list.length+' secteurs',list.map(sectorPage));
+    watchDeployment(sha,'Publication de '+list.length+' secteurs',list.map((s,i)=>sectorPage(s,files[i].content)));
   }catch(err){
     console.error('GitHub error:', err);
     toast('❌','Erreur : '+String(err.message||err).slice(0,100));
@@ -4226,7 +4222,7 @@ async function publishConfigurateur(){
     html = html.replace(/nfp_[A-Za-z0-9]+/g, '');
     const sha=await ghCommitFiles([{path:'configurateur/index.html',content:html}],'💾 Mise à jour configurateur — '+new Date().toLocaleDateString('fr-FR'));
     toast('✅','Envoyé. Mise en ligne en cours…');
-    watchDeployment(sha,'Sauvegarde du configurateur',[{nom:'Configurateur en ligne',url:GH_SITE+'configurateur/',checkPhoto:false}]);
+    watchDeployment(sha,'Sauvegarde du configurateur',[{nom:'Configurateur en ligne',url:GH_SITE+'configurateur/',checkPhoto:false,expected:html}]);
   } catch(err){
     console.error(err);
     toast('❌','Erreur : '+String(err.message||err).slice(0,80));
