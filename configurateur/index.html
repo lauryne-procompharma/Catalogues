@@ -3302,7 +3302,7 @@ function generateAll(){
 }
 
 let toastT;
-function toast(icon,msg){clearTimeout(toastT);document.getElementById('toastIcon').textContent=icon;document.getElementById('toastMsg').textContent=msg;const el=document.getElementById('toast');el.classList.add('show');toastT=setTimeout(()=>el.classList.remove('show'),3200);}
+function toast(icon,msg){clearTimeout(toastT);document.getElementById('toastIcon').textContent=icon;document.getElementById('toastMsg').textContent=msg;const el=document.getElementById('toast');if(el.parentElement!==document.body)document.body.appendChild(el);el.classList.add('show');toastT=setTimeout(()=>el.classList.remove('show'),3200);}
 
 // ── ONGLETS ───────────────────────────────────────────────────────────────────
 function switchTab(tab){
@@ -4104,7 +4104,7 @@ async function watchDeployment(sha, label, pages){
     if(myId!==pubWatchId) return;
     if(enLigne===pages.length) break;
     const ecoule=Date.now()-t0;
-    showPubStatus('⏳ <b>'+label+'</b> : envoyé à GitHub, mise en ligne en cours.<br>'+enLigne+' page(s) sur '+pages.length+' déjà en ligne · '+fmtDuree(ecoule)+' écoulées.<br>Compter <b>1 à 10 minutes</b>. Inutile de recliquer : chaque nouvelle publication remplace la précédente.<br><span style="opacity:.75">'+suivi+'</span>');
+    showPubStatus('✅ <b>Demande prise en compte</b> : '+label.toLowerCase()+' envoyée à GitHub.<br>⏳ Mise en ligne en cours : '+enLigne+' page(s) sur '+pages.length+' déjà en ligne · '+fmtDuree(ecoule)+' écoulées.<br>Compter <b>1 à 10 minutes</b>. Inutile de recliquer : chaque nouvelle publication remplace la précédente.<br><span style="opacity:.75">'+suivi+'</span>');
     if(ecoule>20*60*1000){ showPubStatus('⚠️ <b>'+label+'</b> : toujours pas en ligne après 20 min. Regarde le '+suivi+'.',true); return; }
     await new Promise(res=>setTimeout(res,15000));
   }
@@ -4118,6 +4118,10 @@ async function watchDeployment(sha, label, pages){
   toast('✅',label+' : en ligne');
   showPubStatus('✅ <b>'+label+'</b> : en ligne ('+fmtDuree(Date.now()-t0)+').'+detail+'<br>Si ton navigateur affiche encore l\'ancienne version, fais <b>Ctrl+F5</b> sur la page.<br>'+liens,true);
 }
+function heureFr(){ return new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
+function pubBusy(on){
+  document.querySelectorAll('button[onclick^="publish"]').forEach(b=>{ b.disabled=on; b.style.opacity=on?'.5':''; b.style.cursor=on?'wait':'pointer'; });
+}
 function sectorPage(s,html){ return {nom:s.nom,url:GH_SITE+sectorSlug(s)+'/',checkPhoto:true,expected:html}; }
 
 async function publishToNetlify(sid){
@@ -4125,17 +4129,18 @@ async function publishToNetlify(sid){
   if(!ghToken()){ toast('⚠️','Token GitHub manquant — allez dans 🎨 Design'); return; }
   const s = sectors.find(x=>x.id===sid);
   if(!s){ toast('⚠️','Secteur introuvable'); return; }
-  toast('📤','Envoi à GitHub…');
+  pubWatchId++; pubBusy(true);
+  showPubStatus('📤 <b>Demande reçue</b> ('+heureFr()+') : envoi de '+s.nom+' à GitHub…<br>Ne ferme pas la page.');
   try {
     const html=buildCatalogueHTML(s);
     const sha=await ghCommitFiles([{path:sectorSlug(s)+'/index.html',content:html}],
       '📤 Mise à jour catalogue '+s.nom+' — '+new Date().toLocaleDateString('fr-FR'));
-    setLastPublished(sid); renderSidebar();
-    toast('✅','Envoyé. Mise en ligne en cours…');
+    setLastPublished(sid); renderSidebar(); pubBusy(false);
+    toast('✅','Demande prise en compte');
     watchDeployment(sha,'Publication '+s.nom,[sectorPage(s,html)]);
   } catch(err){
-    console.error('GitHub error:', err);
-    toast('❌','Erreur : '+String(err.message||err).slice(0,100));
+    console.error('GitHub error:', err); pubBusy(false);
+    showPubStatus('❌ <b>La publication n\'est PAS partie.</b><br>'+String(err.message||err).slice(0,160),true);
   }
 }
 
@@ -4144,16 +4149,17 @@ async function publishAllSectors(){
   if(!ghToken()){ toast('⚠️','Token GitHub manquant — allez dans 🎨 Design'); return; }
   const list=sectors.filter(s=>!/^\s*test\s*$/i.test(s.nom));
   if(!list.length){ toast('⚠️','Aucun secteur à publier'); return; }
-  toast('📤','Envoi de '+list.length+' secteurs à GitHub…');
+  pubWatchId++; pubBusy(true);
+  showPubStatus('📤 <b>Demande reçue</b> ('+heureFr()+') : envoi de '+list.length+' secteurs à GitHub ('+list.map(s=>s.nom).join(', ')+')…<br>Ne ferme pas la page.');
   try{
     const files=list.map(s=>({path:sectorSlug(s)+'/index.html',content:buildCatalogueHTML(s)}));
     const sha=await ghCommitFiles(files,'📤 Mise à jour catalogues '+list.map(s=>s.nom).join(', ')+' — '+new Date().toLocaleDateString('fr-FR'));
-    list.forEach(s=>setLastPublished(s.id)); renderSidebar();
-    toast('✅','Envoyé. Mise en ligne en cours…');
+    list.forEach(s=>setLastPublished(s.id)); renderSidebar(); pubBusy(false);
+    toast('✅','Demande prise en compte');
     watchDeployment(sha,'Publication de '+list.length+' secteurs',list.map((s,i)=>sectorPage(s,files[i].content)));
   }catch(err){
-    console.error('GitHub error:', err);
-    toast('❌','Erreur : '+String(err.message||err).slice(0,100));
+    console.error('GitHub error:', err); pubBusy(false);
+    showPubStatus('❌ <b>La publication n\'est PAS partie.</b><br>'+String(err.message||err).slice(0,160),true);
   }
 }
 
@@ -4195,7 +4201,8 @@ function downloadConfigurateur(){
 async function publishConfigurateur(){
   // Sauvegarde EN LIGNE de cet outil (adresse /configurateur/). Ne touche pas aux pages clients.
   if(!ghToken()){ toast('⚠️','Token GitHub manquant'); return; }
-  toast('☁️','Sauvegarde du configurateur en ligne…');
+  pubWatchId++; pubBusy(true);
+  showPubStatus('☁️ <b>Demande reçue</b> ('+heureFr()+') : sauvegarde du configurateur en ligne…<br>Ne ferme pas la page.');
   try {
     const keys2 = ['ads_sectors_v6','ads_pdf_v6','ads_dossier_v6','ads_labo_overrides_v6','ads_offres_v7','ads_labos_custom_v6','ads_labos_order_v6','ads_design_v6','ads_delegates_v6','ads_customtabs_v6','ads_pagetexts_v6'];
     const savedData2 = {};
@@ -4221,11 +4228,11 @@ async function publishConfigurateur(){
     html = html.replace(/github_pat_[A-Za-z0-9_]+/g, '');
     html = html.replace(/nfp_[A-Za-z0-9]+/g, '');
     const sha=await ghCommitFiles([{path:'configurateur/index.html',content:html}],'💾 Mise à jour configurateur — '+new Date().toLocaleDateString('fr-FR'));
-    toast('✅','Envoyé. Mise en ligne en cours…');
+    pubBusy(false); toast('✅','Demande prise en compte');
     watchDeployment(sha,'Sauvegarde du configurateur',[{nom:'Configurateur en ligne',url:GH_SITE+'configurateur/',checkPhoto:false,expected:html}]);
   } catch(err){
-    console.error(err);
-    toast('❌','Erreur : '+String(err.message||err).slice(0,80));
+    console.error(err); pubBusy(false);
+    showPubStatus('❌ <b>La sauvegarde n\'est PAS partie.</b><br>'+String(err.message||err).slice(0,160),true);
   }
 }
 
